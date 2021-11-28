@@ -86,6 +86,7 @@ def refine_image_pt(image, val = 16):
         return image[:, :, :h - h % val, :w - w % val]
 
 
+
 def load_file_list(root_path, child_path = None, is_flatten=False):
     folder_paths = []
     filenames_pure = []
