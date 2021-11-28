@@ -40,7 +40,7 @@ def get_config(project = '', mode = '', config_ = '', data = '', LRS = '', batch
     # data dir
     config.data = 'DVD' # 'nah'
     # config.data_offset = '/data1/junyonglee/video_deblur'
-    config.data_offset = '/content/PVDNet/test_data'
+    config.data_offset = '/content/PVDNet_copy_for_test/test_data'
 
     # config.data_offset = 'datasets/video_deblur'
     config.data_path = None

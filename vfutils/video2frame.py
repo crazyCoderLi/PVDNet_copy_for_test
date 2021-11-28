@@ -23,5 +23,5 @@ if __name__ == "__main__":
     video_path = r"../test_data/raw_video/demo1.mp4"
     frame_path = r"../test_data/random/test_video_1"
 
-    video2frame(video_path, frame_path)
+    video2frame(video_path, frame_path, 1)
 
