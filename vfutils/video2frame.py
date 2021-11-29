@@ -18,6 +18,7 @@ def video2frame(video_path, frame_path, frame_interval):
         for i in range(frame_interval):
             (cap, frame) = vidcap.read()
 
+    print("video2frame work done!")
 
 if __name__ == "__main__":
     video_path = r"../test_data/raw_video/demo1.mp4"
