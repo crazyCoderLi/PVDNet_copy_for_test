@@ -21,7 +21,11 @@ if __name__ == "__main__":
     args = parse.parse_args()
 
     # break the source video into frames that can be handled by the deblur module
-    video2frame(os.path.join(r"test_data/raw_video", args.name), os.path.join(r"test_data/random", args.name), args.frame_interval)
+    video2frame(
+        os.path.join(r"test_data/raw_video", args.name),
+        os.path.join(r"test_data/random", args.name),
+        args.frame_interval
+    )
 
     # invoke the deblur module by cli
     cmd = "CUDA_VISIBLE_DEVICES=0 python run.py --mode PVDNet_DVD --config config_PVDNet --data random --ckpt_abs_name ckpt/PVDNet_DVD.pytorch"
@@ -29,6 +33,11 @@ if __name__ == "__main__":
     return_code = p.wait()
 
     # join the deblured frames into the target video
-    frame2video(os.path.join(r"test_data/resultvideo", args.target), os.path.join(r"test_data/random", args.name))
+    frame2video(
+        os.path.join(r"test_data/resultvideo", args.target),
+        #os.path.join(r"test_data/random", args.name)
+
+        r"/content/PVDNet_copy_for_test/test_data/resultvideo/PVDNet_TOG2021/PVDNet_DVD/result/quanti_quali/PVDNet_DVD/random/2021_12_06_0729/png/output/random"
+    )
 
     print("end!")
