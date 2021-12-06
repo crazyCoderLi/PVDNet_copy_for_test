@@ -15,16 +15,20 @@ if __name__ == "__main__":
     parse = argparse.ArgumentParser()
     parse.add_argument("-n", "--name", type=str, help="video name")
     parse.add_argument("-t", "--target", type=str, help="target video name")
+    parse.add_argument("-i", "--frame_interval", type=int, help="interval to sample frames of video")
 
 
     args = parse.parse_args()
 
-    video2frame(os.path.join(r"test_data/raw_video", args.name), os.path.join(r"test_data/random", args.name), 1)
+    # break the source video into frames that can be handled by the deblur module
+    video2frame(os.path.join(r"test_data/raw_video", args.name), os.path.join(r"test_data/random", args.name), args.frame_interval)
 
+    # invoke the deblur module by cli
     cmd = "CUDA_VISIBLE_DEVICES=0 python run.py --mode PVDNet_DVD --config config_PVDNet --data random --ckpt_abs_name ckpt/PVDNet_DVD.pytorch"
     p = subprocess.Popen(cmd, shell=True)
     return_code = p.wait()
 
+    # join the deblured frames into the target video
     frame2video(os.path.join(r"test_data/resultvideo", args.target), os.path.join(r"test_data/random", args.name))
 
     print("end!")
