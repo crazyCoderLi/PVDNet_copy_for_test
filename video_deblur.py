@@ -21,7 +21,7 @@ if __name__ == "__main__":
     args = parse.parse_args()
 
     # break the source video into frames that can be handled by the deblur module
-    video2frame(
+    fps = video2frame(
         os.path.join(r"test_data/raw_video", args.name),
         os.path.join(r"test_data/random", args.name),
         args.frame_interval
@@ -37,7 +37,8 @@ if __name__ == "__main__":
         os.path.join(r"test_data/resultvideo", args.target),
         #os.path.join(r"test_data/random", args.name)
 
-        r"/content/PVDNet_copy_for_test/test_data/resultvideo/PVDNet_TOG2021/PVDNet_DVD/result/quanti_quali/PVDNet_DVD/random/2021_12_06_0729/png/output/random"
+        r"/content/PVDNet_copy_for_test/test_data/resultvideo/PVDNet_TOG2021/PVDNet_DVD/result/quanti_quali/PVDNet_DVD/random/2021/png/output/random",
+        fps
     )
 
     print("end!")

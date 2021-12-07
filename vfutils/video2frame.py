@@ -5,6 +5,9 @@ def video2frame(video_path, frame_path, frame_interval):
         os.mkdir(frame_path)
 
     vidcap = cv2.VideoCapture(video_path)
+
+    fps = vidcap.get(5)
+
     (cap, frame) = vidcap.read()
 
     if cap == False:
@@ -19,6 +22,8 @@ def video2frame(video_path, frame_path, frame_interval):
             (cap, frame) = vidcap.read()
 
     print("video2frame work done!")
+
+    return fps
 
 if __name__ == "__main__":
     video_path = r"../test_data/raw_video/demo1.mp4"
